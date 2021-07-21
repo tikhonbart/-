@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Портфолио</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<div class="inner-header">
+				<p>Я</p>
+			</div>
+			<div class="header-content mxW">
+				<div class="hd1 animL anim">
+					<img src="images/FullSizeRender.JPEG" alt="img">
+				</div>
+				<div class="hd1">
+					<p class="h zdl anim" id="asd">Бартенев Тихон,</p> 
+					<p class="h zd2 anim" id="as">программист,</p> 
+					<p class="h zd3 anim" id="a">веб-разработчик.</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="middle">
+			<div class="inner-header stky">Обо мне</div>
+			<div class="middle-content mxW">
+				<div class="content1"><div class="blok"><h3>
+					Здравствуйте, я Бартенев Тихон, разработчик в различных сферах, владею навыками верстки сайтов, разрабатываю приложения на языке java, также владею навыками в  программе AutoCad, вот примеры моих работ:</h3></div>
+				</div>
+				<div class="content animL anim">
+					<div class="blok">
+						<img src="images/Picture1.png" alt="">
+						<p>AutoCad "тела вращения"</p>
+						<span>Чертеж модели тела вращения с использованием 3д графики</span>
+					</div>
+				</div>
+
+				<div class="content animR anim">
+					<div class="blok">
+						<img src="images/Picture2.png" alt="">
+						<p>AutoCad "электрические схемы"</p>
+						<span>Чертеж принципиальной электрической схемы усилителя звуковой частоты</span>
+					</div>
+				</div>
+				<div class="content animL anim">
+					<div class="blok">
+						<img src="images/Picture3.jpg" alt="">
+						<p>HTML вёрстка</p>
+						<span>Вёрстка интернет-магазина sportshold с использованием html и css</span>
+					</div>
+				</div>
+				<div class="content animR anim">
+					<div class="blok">
+						<img src="images/Picture6.jpg" alt="">
+						<p>HTML вёрстка</p>
+						<span>Ещё один интернет-магазин с использованием html и css</span>
+					</div>
+				</div>
+				<div class="content animL anim">
+					<div class="blok">
+						<img src="images/Picture4.jpg" alt="">
+						<p>Java приложение</p>
+						<span>Приложение на языке java с функционалом поиска пути от одной точки до другой</span>
+					</div>
+				</div>
+				<div class="content animR anim">
+					<div class="blok">
+						<img src="images/Picture5.jpg" alt="">
+						<p>Java приложение</p>
+						<span>Приложение на Java для рисования фракталов</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="bottom">
+			<div class="inner-header stky">Связь со мной</div>
+			<div class="wrap-bot mxW">
+				<p>Вы можете написать мне в одну из социальных сетей или позвонить по телеофону по вопросам сотрудничества, вот мои контакты:</p>
+				<ul>
+					<li><a href="tel:+7 (985) 940-25-02">Телефон</a></li>
+					<li><a href="mailto:minadisran@gmail.com">Gmail</a></li>
+					<li><a href="https://vk.com/jopajopajopajopajopajopajopajopo">Вконтакте</a></li>
+					<li><a href="https://t.me/bread1k">Телеграм</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script>
+		var r, g, b;
+		function ran(){
+			r = Math.floor(Math.random()*256);
+			g = Math.floor(Math.random()*256);
+			b = Math.floor(Math.random()*256);
+		}
+		var cvet = document.getElementById("asd");
+		ran();
+		cvet.style.color = "rgb("+r+","+g+","+b+")";
+		cvet = document.getElementById("as");
+		ran();
+		cvet.style.color = "rgb("+r+","+g+","+b+")";
+		cvet = document.getElementById("a");
+		ran();
+		cvet.style.color = "rgb("+r+","+g+","+b+")";
+
+		const animItems = document.querySelectorAll(".anim");
+		if (animItems.length > 0){
+			window.addEventListener("scroll", animOnScroll);
+			function animOnScroll(){
+				for(let i = 0; i < animItems.length; i++){
+					const animItem = animItems[i];
+					const animItemHeight = animItem.offsetHeight;
+					const animItemOffset = offset(animItem).top;
+					const start = 4;
+
+					let animItemPoint = window.innerHeight - animItemHeight / start;
+					if (animItemHeight > window.innerHeight){
+						animItemPoint = window.innerHeight - window.innerHeight / start;
+					}
+
+					if((pageYOffset > animItemOffset - animItemPoint) && pageYOffset < (animItemOffset + animItemHeight)){
+						animItem.classList.add("active");
+					}
+					
+				}
+			}
+			function offset(el){
+				const rect = el.getBoundingClientRect(),
+					scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+					scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+				return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
+			}
+			setTimeout(() => {
+				animOnScroll();
+			}, 200);
+		}
+	</script>
+</body>
+</html>
